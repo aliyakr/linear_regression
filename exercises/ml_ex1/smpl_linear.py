@@ -54,6 +54,8 @@ def train(population, profit, weight, bias, learning_rate, iters):
 
     return weight, bias, cost_history
 
+
+
 # Using numpy library
 import numpy as np
 
@@ -67,6 +69,7 @@ def gradientDescent(X, y, theta, alpha, iters):
     parameters = int(theta.ravel().shape[1])
     cost = np.zeros(iters)
     
+    
     for i in range(iters):
         error = (X * theta.T) - y
         
@@ -78,3 +81,19 @@ def gradientDescent(X, y, theta, alpha, iters):
         cost[i] = computeCost(X, y, theta)
         
     return theta, cost
+
+
+#For each feature column {
+    #1 Subtract the mean of the column (mean normalization)
+    #2 Divide by the standard deviation
+#}
+
+import pandas
+
+def normalize(data):
+    
+    data = (data - data.mean()) / data.std()
+    
+    return data
+
+
